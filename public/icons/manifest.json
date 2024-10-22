@@ -1,20 +1,27 @@
 {
 	"name": "Next Sports",
 	"short_name": "Next Sports",
+	"description": "Discover a world of sports excellence at Next Sports. Shop the latest apparel and accessories for athletes of all levels.",
+	"categories": ["shopping", "sports"],
 	"start_url": "/",
+	"scope": "/",
 	"icons": [
 		{
 			"src": "/icons/android-chrome-192x192.png",
 			"sizes": "192x192",
-			"type": "image/png"
+			"type": "image/png",
+			"purpose": "any maskable"
 		},
 		{
 			"src": "/icons/android-chrome-512x512.png",
 			"sizes": "512x512",
-			"type": "image/png"
+			"type": "image/png",
+			"purpose": "any maskable"
 		}
 	],
-	"theme_color": "#ffffff",
-	"background_color": "#ffffff",
-	"display": "standalone"
+	"theme_color": "#2570eb",
+	"background_color": "#eaeff5",
+	"display": "standalone",
+	"orientation": "portrait",
+	"prefer_related_applications": false
 }
