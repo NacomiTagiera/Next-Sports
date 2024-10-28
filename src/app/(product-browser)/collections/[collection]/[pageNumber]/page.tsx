@@ -26,6 +26,10 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 	return {
 		title: collection?.name,
 		description: collection?.description,
+		openGraph: {
+			title: collection?.name,
+			description: collection?.description ?? "",
+		},
 	};
 };
 

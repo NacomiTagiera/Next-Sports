@@ -1,5 +1,7 @@
 import { Suspense } from "react";
 
+import { type Metadata } from "next";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
 import { ReviewsListSkeleton, TrendingProductsSkeleton } from "@/components/UI/Skeletons";
@@ -9,15 +11,31 @@ import { ProductImage } from "@/features/products/productDetails/components/Prod
 import { ProductInfo } from "@/features/products/productDetails/components/ProductInfo";
 import { RelatedProducts } from "@/features/products/productDetails/components/RelatedProducts";
 import { VariantSelector } from "@/features/products/productDetails/components/VariantSelector";
-import { ReviewForm } from "@/features/reviews/reviewForm/components/ReviewForm";
 import { ReviewFormWrapper } from "@/features/reviews/reviewForm/components/ReviewFormWrapper";
 import { ReviewsList } from "@/features/reviews/reviewsList/components/ReviewsList";
+
+const ReviewForm = dynamic(() =>
+	import("@/features/reviews/reviewForm/components/ReviewForm").then((mod) => mod.ReviewForm),
+);
 
 interface Props {
 	params: {
 		slug: string;
 	};
 }
+
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+	const product = await getProductByIdOrSlug({ slug: params.slug });
+
+	return {
+		title: product?.name,
+		description: product?.description,
+		openGraph: {
+			title: product?.name,
+			description: product?.description,
+		},
+	};
+};
 
 export default async function ProductPage({ params }: Props) {
 	const product = await getProductByIdOrSlug({ slug: params.slug });

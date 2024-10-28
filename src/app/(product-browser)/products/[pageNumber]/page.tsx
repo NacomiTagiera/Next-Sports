@@ -25,6 +25,13 @@ export const generateStaticParams = async () => {
 
 export const metadata: Metadata = {
 	title: "All Products",
+	description:
+		"Explore a wide selection of premium sportswear and activewear at Next Sports. Whether you're looking for high-performance gym wear, comfortable running outfits, or stylish yoga apparel, we have it all. Browse our latest collections and gear up for success in your favorite sport!",
+	openGraph: {
+		title: "All Products",
+		description:
+			"Explore a wide selection of premium sportswear and activewear at Next Sports. Whether you're looking for high-performance gym wear, comfortable running outfits, or stylish yoga apparel, we have it all. Browse our latest collections and gear up for success in your favorite sport!",
+	},
 };
 
 interface Props extends PageProps {

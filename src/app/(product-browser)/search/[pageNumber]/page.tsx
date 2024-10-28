@@ -17,6 +17,13 @@ import { type PageProps } from "@/types";
 
 export const metadata: Metadata = {
 	title: "Search Results",
+	description:
+		"Find exactly what you're looking for at Next Sports! Browse through a wide selection of premium sportswear, accessories, and gear designed for athletes of all levels. Discover the perfect fit for your sport and elevate your performance with top-quality products.",
+	openGraph: {
+		title: "Search Results",
+		description:
+			"Find exactly what you're looking for at Next Sports! Browse through a wide selection of premium sportswear, accessories, and gear designed for athletes of all levels. Discover the perfect fit for your sport and elevate your performance with top-quality products.",
+	},
 };
 
 interface Props extends PageProps {

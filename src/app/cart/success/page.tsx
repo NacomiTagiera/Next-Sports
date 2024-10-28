@@ -7,10 +7,12 @@ import { stripe } from "@/lib/stripe";
 
 export const metadata: Metadata = {
 	title: "Success",
-	description: "Your purchase was successful",
+	description:
+		"Thank you for shopping at Next Sports! Your order has been successfully placed. Get ready to elevate your performance with our top-quality sportswear and gear. Stay tuned for shipping updates, and we’ll get your order to you soon!",
 	openGraph: {
 		title: "Success",
-		description: "Your purchase was successful",
+		description:
+			"Thank you for shopping at Next Sports! Your order has been successfully placed. Get ready to elevate your performance with our top-quality sportswear and gear. Stay tuned for shipping updates, and we’ll get your order to you soon!",
 	},
 };
 
