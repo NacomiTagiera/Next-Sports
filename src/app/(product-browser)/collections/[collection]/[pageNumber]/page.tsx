@@ -19,6 +19,22 @@ interface Props {
 	searchParams: { [key: string]: string | string[] | undefined };
 }
 
+export const generateStaticParams = async () => {
+	const collections = ["urban-athleisure", "new-arrivals", "summer-vibes", "elegant-extras"];
+	const paramsArray: { collection: string; pageNumber: string }[] = [];
+
+	for (const collection of collections) {
+		const productsCount = await getProductsCountInCollection(collection, parseSearchParams({}));
+		const numberOfPages = Math.ceil(productsCount / PRODUCTS_PER_PAGE);
+
+		for (let pageNumber = 1; pageNumber <= numberOfPages; pageNumber++) {
+			paramsArray.push({ collection, pageNumber: pageNumber.toString() });
+		}
+	}
+
+	return paramsArray;
+};
+
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
 	const page = safeParseInt(params.pageNumber, 1);
 	const collection = await getCollectionBySlug(params.collection, parseSearchParams({}, page));

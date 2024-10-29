@@ -1,6 +1,6 @@
 import { ClerkProvider } from "@clerk/nextjs";
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Roboto_Flex } from "next/font/google";
 
 import { Footer } from "@/components/Layout/Footer";
@@ -14,7 +14,7 @@ import "./globals.css";
 const robotoFlex = Roboto_Flex({ subsets: ["latin"], variable: "--font-roboto-flex" });
 
 export const metadata: Metadata = {
-	metadataBase: new URL("https://next-sports-ecommerce.vercel.app/"),
+	metadataBase: new URL("https://next-sports-ecommerce.vercel.app"),
 	title: {
 		default: "Next Sports",
 		template: "%s | Next Sports",
@@ -35,8 +35,11 @@ export const metadata: Metadata = {
 	openGraph: {
 		type: "website",
 		siteName: "Next Sports",
-		url: "https://next-sports-ecommerce.vercel.app/",
+		url: "https://next-sports-ecommerce.vercel.app",
 		locale: "en_US",
+		title: "Next Sports",
+		description:
+			"Discover a world of sports excellence at Next Sports. Shop the latest apparel and accessories for athletes of all levels. Find your winning edge with top-quality products and unbeatable deals.",
 	},
 	icons: {
 		icon: [
@@ -58,16 +61,37 @@ export const metadata: Metadata = {
 		],
 		other: [
 			{
-				rel: "android-chrome-192x192",
 				url: "/icons/android-chrome-192x192.png",
+				sizes: "192x192",
 			},
 			{
-				rel: "android-chrome-512x512",
 				url: "/icons/android-chrome-512x512.png",
+				sizes: "512x512",
 			},
 		],
 	},
+	robots: {
+		index: true,
+		follow: true,
+		"max-snippet": -1,
+		"max-image-preview": "large",
+	},
+	keywords: [
+		"Sports apparel",
+		"Sports accessories",
+		"Sports gear",
+		"Sports store",
+		"Athlete clothing",
+		"Next Sports",
+		"Buy sports gear online",
+		"Fitness apparel",
+	],
 	manifest: "/icons/manifest.json",
+};
+
+export const viewport: Viewport = {
+	themeColor: "#2570eb",
+	colorScheme: "light",
 };
 
 export default async function RootLayout({
@@ -91,7 +115,7 @@ export default async function RootLayout({
 			signUpUrl="/sign-up"
 			appearance={{
 				variables: {
-					colorPrimary: "#3b82f6",
+					colorPrimary: "#2570eb",
 					fontFamily: "var(--font-roboto-flex)",
 				},
 				elements: {

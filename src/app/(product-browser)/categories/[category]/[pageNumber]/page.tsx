@@ -22,6 +22,22 @@ interface Props extends PageProps {
 	};
 }
 
+export const generateStaticParams = async () => {
+	const categories = ["t-shirts", "hoodies", "accessories"] as const;
+	const paramsArray: { category: string; pageNumber: string }[] = [];
+
+	for (const category of categories) {
+		const productsCount = await getProductsCountInCategory(category, parseSearchParams({}));
+		const numberOfPages = Math.ceil(productsCount / PRODUCTS_PER_PAGE);
+
+		for (let pageNumber = 1; pageNumber <= numberOfPages; pageNumber++) {
+			paramsArray.push({ category, pageNumber: pageNumber.toString() });
+		}
+	}
+
+	return paramsArray;
+};
+
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
 	const page = safeParseInt(params.pageNumber, 1);
 	const category = await getCategoryBySlug(params.category, parseSearchParams({}, page));
