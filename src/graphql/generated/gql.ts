@@ -57,6 +57,7 @@ const documents = {
 		types.ProductGetByIdDocument,
 	"query ProductGetBySlug($slug: String!) {\n  product(where: {slug: $slug}) {\n    ...ProductDetails\n  }\n}":
 		types.ProductGetBySlugDocument,
+	"query ProductsGetAllSlugs {\n  products {\n    slug\n  }\n}": types.ProductsGetAllSlugsDocument,
 	"query ProductsGetBySearch($search: String!, $priceGt: Int!, $priceLt: Int!, $ratingGt: Float!, $ratingLt: Float!, $colors: [String!], $sizes: [String!], $brand: String!, $limit: Int!, $offset: Int!, $orderBy: ProductOrderByInput) {\n  products(\n    where: {AND: [{_search: $search}, {price_gte: $priceGt}, {price_lte: $priceLt}, {rating_gte: $ratingGt}, {rating_lte: $ratingLt}, {name_contains: $brand}, {productColorVariants_some: {name_in: $colors}}, {OR: [{productSizeVariants_some: {name_in: $sizes}}, {productSizeVariants_none: {}}]}]}\n    first: $limit\n    skip: $offset\n    orderBy: $orderBy\n  ) {\n    ...ProductListItem\n  }\n}":
 		types.ProductsGetBySearchDocument,
 	"query ProductsGetCount($priceGt: Int!, $priceLt: Int!, $ratingGt: Float!, $ratingLt: Float!, $colors: [String!], $sizes: [String!], $brand: String!) {\n  productsConnection(\n    where: {AND: [{price_gte: $priceGt}, {price_lte: $priceLt}, {rating_gte: $ratingGt}, {rating_lte: $ratingLt}, {name_contains: $brand}, {productColorVariants_some: {name_in: $colors}}, {OR: [{productSizeVariants_some: {name_in: $sizes}}, {productSizeVariants_none: {}}]}]}\n  ) {\n    aggregate {\n      count\n    }\n  }\n}":
@@ -213,6 +214,12 @@ export function graphql(
 export function graphql(
 	source: "query ProductGetBySlug($slug: String!) {\n  product(where: {slug: $slug}) {\n    ...ProductDetails\n  }\n}",
 ): typeof import("./graphql").ProductGetBySlugDocument;
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+	source: "query ProductsGetAllSlugs {\n  products {\n    slug\n  }\n}",
+): typeof import("./graphql").ProductsGetAllSlugsDocument;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

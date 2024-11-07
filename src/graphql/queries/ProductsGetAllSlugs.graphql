@@ -1,0 +1,5 @@
+query ProductsGetAllSlugs {
+	products {
+		slug
+	}
+}

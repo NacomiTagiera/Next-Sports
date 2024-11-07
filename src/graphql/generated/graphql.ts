@@ -6307,6 +6307,10 @@ export type ProductGetBySlugQuery = {
 	} | null;
 };
 
+export type ProductsGetAllSlugsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ProductsGetAllSlugsQuery = { products: Array<{ slug: string }> };
+
 export type ProductsGetBySearchQueryVariables = Exact<{
 	search: Scalars["String"]["input"];
 	priceGt: Scalars["Int"]["input"];
@@ -6886,6 +6890,16 @@ fragment ProductDetails on Product {
     name
   }
 }`) as unknown as TypedDocumentString<ProductGetBySlugQuery, ProductGetBySlugQueryVariables>;
+export const ProductsGetAllSlugsDocument = new TypedDocumentString(`
+    query ProductsGetAllSlugs {
+  products {
+    slug
+  }
+}
+    `) as unknown as TypedDocumentString<
+	ProductsGetAllSlugsQuery,
+	ProductsGetAllSlugsQueryVariables
+>;
 export const ProductsGetBySearchDocument = new TypedDocumentString(`
     query ProductsGetBySearch($search: String!, $priceGt: Int!, $priceLt: Int!, $ratingGt: Float!, $ratingLt: Float!, $colors: [String!], $sizes: [String!], $brand: String!, $limit: Int!, $offset: Int!, $orderBy: ProductOrderByInput) {
   products(
