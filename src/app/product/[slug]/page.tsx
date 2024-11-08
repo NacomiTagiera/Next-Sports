@@ -11,6 +11,7 @@ import { ProductImage } from "@/features/products/productDetails/components/Prod
 import { ProductInfo } from "@/features/products/productDetails/components/ProductInfo";
 import { RelatedProducts } from "@/features/products/productDetails/components/RelatedProducts";
 import { VariantSelector } from "@/features/products/productDetails/components/VariantSelector";
+import { getAllProductsSlugs } from "@/features/products/productsList/api/fetchQueries";
 import { ReviewFormWrapper } from "@/features/reviews/reviewForm/components/ReviewFormWrapper";
 import { ReviewsList } from "@/features/reviews/reviewsList/components/ReviewsList";
 
@@ -23,6 +24,12 @@ interface Props {
 		slug: string;
 	};
 }
+
+export const generateStaticParams = async () => {
+	const products = await getAllProductsSlugs();
+
+	return products.map((products) => ({ slug: products.slug }));
+};
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
 	const product = await getProductByIdOrSlug({ slug: params.slug });

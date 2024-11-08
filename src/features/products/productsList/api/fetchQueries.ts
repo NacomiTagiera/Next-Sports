@@ -1,4 +1,5 @@
 import {
+	ProductsGetAllSlugsDocument,
 	ProductsGetBySearchDocument,
 	ProductsGetCountBySearchDocument,
 	ProductsGetCountDocument,
@@ -31,6 +32,14 @@ export const getProductsBySearch = async (query: string, params: ProductQueryPar
 			...params,
 			...paginationArgs(params.page),
 		},
+	});
+
+	return products;
+};
+
+export const getAllProductsSlugs = async () => {
+	const { products } = await executeGraphql({
+		query: ProductsGetAllSlugsDocument,
 	});
 
 	return products;
