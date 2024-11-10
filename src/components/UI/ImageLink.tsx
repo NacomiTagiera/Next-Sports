@@ -12,6 +12,7 @@ interface Props {
 	href: Route;
 	children?: React.ReactNode;
 	Component?: typeof NextImage | typeof BlurredImage;
+	priority?: boolean;
 }
 
 export const ImageLink = ({
@@ -22,6 +23,7 @@ export const ImageLink = ({
 	href,
 	children,
 	Component = NextImage,
+	priority = false,
 }: Props) => (
 	<Link href={href} className="group block">
 		<div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-twilight-100 group-hover:opacity-75">
@@ -32,6 +34,7 @@ export const ImageLink = ({
 					width={width}
 					height={height}
 					className="object-cover object-center"
+					priority={priority}
 				/>
 			) : null}
 		</div>
