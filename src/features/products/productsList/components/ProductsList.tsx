@@ -8,9 +8,10 @@ import { ProductListItemDescription } from "./ProductListItemDescritpion";
 interface Props {
 	products: ProductListItemFragment[];
 	className?: string;
+	priority?: boolean;
 }
 
-export const ProductList = ({ products, className }: Props) => {
+export const ProductList = ({ products, className, priority }: Props) => {
 	return (
 		<ul className={cn("mb-8 mt-4 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4", className)}>
 			{products.map((product) => (
@@ -22,6 +23,7 @@ export const ProductList = ({ products, className }: Props) => {
 						height={256}
 						href={`/product/${product.slug}`}
 						Component={BlurredImage}
+						priority={priority}
 					>
 						<ProductListItemDescription product={product} />
 					</ImageLink>

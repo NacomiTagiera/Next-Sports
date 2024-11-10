@@ -81,7 +81,7 @@ export const parseSearchParams = (
 		brand: searchParams.brand ? (searchParams.brand as string) : "",
 		orderBy: searchParams.orderBy
 			? (searchParams.orderBy as ProductQueryParams["orderBy"])
-			: undefined,
+			: "createdAt_DESC",
 		page: page ?? 1,
 	};
 };

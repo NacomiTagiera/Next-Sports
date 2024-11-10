@@ -65,7 +65,7 @@ export default async function SearchPage({ params, searchParams }: Props) {
 			<div className="mt-8 pb-24">
 				{products.length > 0 ? (
 					<>
-						<ProductList products={products} />
+						<ProductList products={products} priority />
 						<Pagination
 							numberOfPages={numberOfPages}
 							baseUrl="/search"

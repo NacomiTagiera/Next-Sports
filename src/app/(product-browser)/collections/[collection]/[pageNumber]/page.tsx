@@ -13,10 +13,10 @@ import { ProductList } from "@/features/products/productsList/components/Product
 import { SortDropdown } from "@/features/products/productsList/components/SortDropdown";
 import { PRODUCTS_PER_PAGE } from "@/lib/constants";
 import { parseSearchParams, safeParseInt } from "@/lib/utils";
+import { type PageProps } from "@/types";
 
-interface Props {
+interface Props extends PageProps {
 	params: { collection: string; pageNumber: string };
-	searchParams: { [key: string]: string | string[] | undefined };
 }
 
 export const generateStaticParams = async () => {
@@ -82,7 +82,7 @@ export default async function CollectionPage({ params, searchParams }: Props) {
 			<div className="mt-8 pb-24">
 				{collection.products.length > 0 ? (
 					<>
-						<ProductList products={collection.products} />
+						<ProductList products={collection.products} priority />
 						<Pagination
 							numberOfPages={numberOfPages}
 							baseUrl={`/collections/${collection.slug}`}

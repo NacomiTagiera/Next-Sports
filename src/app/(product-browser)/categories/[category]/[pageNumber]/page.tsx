@@ -23,7 +23,7 @@ interface Props extends PageProps {
 }
 
 export const generateStaticParams = async () => {
-	const categories = ["t-shirts", "hoodies", "accessories"] as const;
+	const categories = ["t-shirts", "hoodies", "accessories"];
 	const paramsArray: { category: string; pageNumber: string }[] = [];
 
 	for (const category of categories) {
@@ -85,7 +85,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 			<div className="mt-8 pb-24">
 				{category.products.length > 0 ? (
 					<>
-						<ProductList products={category.products} />
+						<ProductList products={category.products} priority />
 						<Pagination
 							numberOfPages={numberOfPages}
 							baseUrl={`/categories/${category.slug}`}

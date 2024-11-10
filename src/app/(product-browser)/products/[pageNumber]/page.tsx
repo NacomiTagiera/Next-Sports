@@ -71,7 +71,7 @@ export default async function ProductsPage({ params, searchParams }: Props) {
 				<h2 className="sr-only">Products List</h2>
 				{products.length > 0 ? (
 					<>
-						<ProductList products={products} />
+						<ProductList products={products} priority />
 						<Pagination
 							numberOfPages={numberOfPages}
 							baseUrl="/products"
